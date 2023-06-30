@@ -16,6 +16,15 @@ public class ReverseLinkedList2Pointers {
         }
         return prev;
     }
+    public static Node recursiveReverse(Node head){
+        if (head.next == null) {
+            return head;
+        }
+        Node retVal = recursiveReverse(head.next);
+        head.next.next = head;
+        head.next = null;
+        return retVal;
+    }
 
     public static void printList(Node head) {
         while (head != null) {
@@ -32,8 +41,8 @@ public class ReverseLinkedList2Pointers {
         head.next.next.next.next = new Node(5);
 
         printList(head);
-        Node result = reverse(head);
-        System.out.println("************");
+        Node result = recursiveReverse(head);
+        System.out.println("XOXOXO");
         printList(result);
     }
 }
